@@ -8,6 +8,7 @@
     --colorWhite: #fff;
     --colorBackground: #fcfcfc;
     --colorBorder: #979797;
+    --colorError:#cc0000;
 
 }
 
@@ -539,7 +540,12 @@ input[type=submit]:focus {
 
 
 .contact__popup {
-    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    z-index: 10;
     width: 1242px;
     height: 608px;
     padding: 90px;
@@ -548,6 +554,10 @@ input[type=submit]:focus {
     margin: 20px auto;
     font-family: 'Lato', sans-serif;
     }
+
+.contact__popup.active {
+    transform: translate(-50%, -50%) scale(1);
+}
 
 .popup__header {
     margin: 0 auto;
@@ -566,7 +576,6 @@ input[type=submit]:focus {
    position: absolute;
    bottom:0px;
    left:-200px;
-
 
 }
 h3.popup__title {
@@ -596,6 +605,91 @@ h3.popup__title {
     margin-top: 80px;
     text-align: center;
 }
+
+.overlay {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .3) ;
+    pointer-events: none;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: all;
+
+}
+
+.form__error-text {
+    color: var(--colorError);
+    font-size: 0.8em;
+    padding: 10px 0;
+}
+.field-error {
+    border: 2px solid var(--colorError) !important;
+    color: var(--colorError);
+}
+
+@media (max-width: 1360px) {
+.contact__popup {
+    width: 1020px;
+}
+
+.popup__title {
+    font-size: 2em;
+}
+.popup__text {
+    font-size: 1.2em;
+}
+
+.popup__header::after {
+    width: 74px;
+    height: 109px;
+    left: -120px;
+
+}
+}
+@media(max-width: 1100px) {
+    .contact__popup {
+        width: 816px;
+    }
+
+    .popup__header::after {
+        left: -70px;
+    }
+
+    .popup__btn {
+        width: 265px;
+        height: 62px;
+        margin-top: 70px;
+    }
+}
+
+@media(max-width: 900px) {
+
+    .contact__popup {
+        max-width: 660px;
+        height: auto;
+    }
+    .popup__header::after {
+        display: none;
+    }
+
+    .popup__btn {
+        width: 212px;
+        height: 50px;
+        margin-top: 50px;
+
+    }
+}
+
+
+
+
+
 /* Contact End */
 
 /* About Start */
@@ -713,3 +807,4 @@ h3.popup__title {
 }
 
 /* About End */
+
