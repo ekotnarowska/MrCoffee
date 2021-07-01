@@ -44,7 +44,6 @@ function createFieldError(field, text) {
   const div = document.createElement('div');
   div.classList.add('form__error-text');
   div.innerText = text;
-
   if (field.nextElementSibling === null) {
     field.parentElement.appendChild(div);
   } else if (!field.nextElementSibling.classList.contains('form__error-text')) {
@@ -85,21 +84,25 @@ form.addEventListener('submit', (e) => {
   }
 
   if (!testText(nameField, 2)) {
+    markFieldAsError(nameField, true);
     createFieldError(nameField, 'Veuillez remplir correctement le champ du prenom');
     formErrors = true;
   }
 
   if (!testText(surnameField, 3)) {
+    markFieldAsError(surnameField, true);
     createFieldError(surnameField, 'Veuillez remplir correctement le champ du nom');
     formErrors = true;
   }
 
   if (!testEmail(emailField)) {
+    markFieldAsError(emailField, true);
     createFieldError(emailField, 'Veuillez remplir correctement le champ e-mail');
     formErrors = true;
   }
 
   if (!testText(messageField, 3)) {
+    markFieldAsError(messageField, true);
     createFieldError(messageField, 'Veuillez saisir votre message');
     formErrors = true;
   }

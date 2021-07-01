@@ -426,9 +426,12 @@ p {
 	outline: 0;
 }
 
+
 .contact .container {
     max-width: 810px;
     padding: 10px 20px 40px;
+
+
 }
 .contact__form {
     margin: 20px auto;
@@ -626,9 +629,10 @@ h3.popup__title {
 .form__error-text {
     color: var(--colorError);
     font-size: 0.8em;
-    padding: 10px 0;
+    padding: 0 0 5x 0;
 }
 .field-error {
+    box-shadow: 0 0 0 2px rgba(204,0,0, 0.3);
     border: 2px solid var(--colorError) !important;
     color: var(--colorError);
 }
